@@ -1,0 +1,140 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Happy birthday</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link href="style/default.css" type="text/css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+	 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
+</head>
+
+<body style="background:#000000;">
+    <script type="text/javascript" src="style/jquery.js"></script>
+    <script type="text/javascript" src="style/garden.js"></script>
+    <script type="text/javascript" src="style/functions.js"></script>
+	
+	<div style="position:absolute;z-index:99;" id="button_div"><div id="button_div_down">
+	<a id="second" class="btn-floating btn-large waves-effect waves-light transparent button_size" style="border-style: solid;
+  border-width: 1px;border-color:white;"><i class="material-icons">chevron_right</i></a>
+	 </button>
+	</div></div>	
+    <div id="mainDiv" style="z-index:5;">
+	
+        <div id="content">
+			
+            <strong><div id="code" style="z-index:6;">
+			
+				<div class="reset">
+              <span class="comments">/*</span><span class="comments">Today is a special day</span><br>
+              <span class="comments">So I write something for a special friend</span>
+              <span class="comments">*/</span><br />
+                <span class="code-color">Day today = </span><span class="keyword">new</span><span class="code-color"> Day(</span><span class="string">"Birthday"</span><span class="code-color">);</span><br />
+				<span class="comments">//On January 06, 2018</span><br />
+                <span class="code-color">Birthday_Girl u = </span><span class="keyword">new</span><span class="code-color"> Birthday_Girl(</span><span class="string">"Yang-en"</span><span class="code-color">);</span><br />
+                <span class="comments">//Her name is Yang-en</span><br />
+                <span class="code-color">Web card = </span><span class="keyword">new</span><span class="code-color"> Web(</span><span class="string">"gift"</span><span class="code-color">);</span><br />
+                <span class="comments">//Designing a birthday card,</span><br />
+				<span class="code-color"><span class="keyword">var</span> message = [];</span><br />
+                <span class="comments">//I have something to tell her:</span><br />
+                <span class="code-color">message.push(</span><span class="string">"Happy Birthday \n"</span><span class="code-color">);</span><br>
+                <span class="comments">//First of all,happy birthday to you~</span><br />
+				<span class="code-color">message.push(Semester.Review(<span class="string">"hard"</span></span><span class="code-color">));</span><br />
+                <span class="comments">//You've been studying hard this
+				semester</span><br />
+                <span class="code-color">message.push(u.feel(</span><span class="string">"depressed"</span><span class="code-color">));</span><br />
+				<span class="comments">//Maybe sometimes you'd be depressed</span><br />
+                <span class="code-color">message.push(today.past(</span><span class="string">"gone"</span><span class="code-color">));</span><br />
+				<span class="comments">//But gone are the days </span><br />	
+				<span class="code-color">message.push(today.highlight(</span><span class="string">"Yang-en"</span><span class="code-color">));</span><br>
+				<span class="comments">//And above all,today is your day~</span><br />
+				<span class="code-color">card.write(message,<span class="string">"for"</span>,u);</span><br />
+                <span class="comments">//Have fun on this meaningful day~</span><br />
+                <span class="code-color">card.end();</span><br /><span class="comments">//Compile finished...</span>
+			</div>
+            </div></strong>
+            <div id="loveHeart" style="z-index:7;">
+                <canvas id="garden" ></canvas>
+                <div id="words" style="position:relative;">
+                    <div id="messages" style="position:absolute;">
+
+                    <strong style="font-family: 'Dancing Script', cursive;
+		color:white;">Wish all your dreams come true</strong>
+                      
+                    <div class="signature" id="HBD">
+					
+                        <strong style="font-family: 'Dancing Script', cursive;
+		color:white;">Happy Birthday</strong><br/>
+						<span class="signature" id="for" style="font-family: 'Dancing Script', cursive;
+		color:white;" ><strong>Yang-en</strong><br></span>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+	
+    <script type="text/javascript">
+        var offsetX = $("#loveHeart").width() /2;
+        var offsetY = $("#loveHeart").height() / 2 - 55;
+        var count = 1;
+        if (!document.createElement('canvas').getContext) {
+            var msg = document.createElement("div");
+            msg.id = "errorMsg";
+            msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+"; 
+            document.body.appendChild(msg);
+            $("#code").css("display", "none")
+            
+        } else {
+            setTimeout(function () {
+				
+				if(!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+				
+                adjustWordsPosition();
+                startHeartAnimation();
+				}
+				else{
+					$(document).ready(function(){
+						
+						$("#second").click(function(){
+							if($("#loveHeart").css("display") == "none"){
+								if($("#loveHeart").hasClass("rotate_Y"))
+									$("#loveHeart").removeClass("rotate_Y");
+								$("#code").addClass("rotate_Y");
+								$("#code").fadeOut(1000);
+								if($("#button_div_down").hasClass("rotate_Y"))
+									$("#button_div_down").removeClass("rotate_Y");
+								$("#button_div").addClass("rotate_Y");
+								var x=setTimeout("document.getElementById('second').innerHTML = "+"'<i class="+'"material-icons"'+">chevron_left</i>'",1000);
+								$("#loveHeart").fadeIn(1000);
+								if(count < 350){
+								adjustWordsPosition();
+								startHeartAnimation();
+								}
+							}
+							else{
+								if($("#code").hasClass("rotate_Y"))
+									$("#code").removeClass("rotate_Y");
+								$("#loveHeart").addClass("rotate_Y");
+								$("#loveHeart").fadeOut(1000);
+								if($("#button_div").hasClass("rotate_Y"))
+									$("#button_div").removeClass("rotate_Y");
+								$("#button_div_down").addClass("rotate_Y");
+								var x=setTimeout("document.getElementById('second').innerHTML = "+"'<i class="+'"material-icons"'+">chevron_right</i>'",1000);
+								$("#code").fadeIn(1000);
+							}
+							count++;
+						});
+					});
+				}
+            },/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)?1500 : 13000);
+            
+            adjustCodePosition();
+            $("#code").typewriter();
+			
+        }
+    </script>
+	</div>
+</body>
+</html>
